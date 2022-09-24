@@ -5,10 +5,25 @@ from timer import Timer
 
 
 class Alien(Sprite):
-    alien_images = [pg.image.load(f'images/alien{n}.bmp') for n in range(2)]
+    #class variables
+    #alien_images = [pg.image.load(f'images/alien{n}.bmp') for n in range(2)]
+    
+    alien_images0 = [pg.image.load(f'images/alien0{n}.bmp') for n in range(2)]
+    alien_images1 = [pg.image.load(f'images/alien1{n}.bmp') for n in range(2)]
+    alien_images2 = [pg.image.load(f'images/alien2{n}.bmp') for n in range(2)]
+    alien_images3 = [pg.image.load(f'images/alien3{n}.bmp') for n in range(2)]
+    
+    
+    alien_timers = {
+        0: Timer(image_list = alien_images0, start_index=0, delay=200),
+        1: Timer(image_list = alien_images1, start_index=0, delay=400),
+        2: Timer(image_list = alien_images2, start_index=0, delay=450),
+        3: Timer(image_list = alien_images3, start_index=0, delay=300)
+    } 
+    
     alien_explosion_images = [pg.image.load(f'images/explode{n}.png') for n in range(7)]
     
-    def __init__(self, settings, screen):
+    def __init__(self, settings, screen, type):
         super().__init__()
         self.screen = screen
         self.settings = settings
@@ -16,10 +31,11 @@ class Alien(Sprite):
         self.rect = self.image.get_rect()
         self.rect.y = self.rect.height
         self.x = float(self.rect.x)
+        self.type = type
         
         self.dying = self.dead = False
-        self.timer_normal = Timer(image_list=self.alien_images)              
-        self.timer_explosion = Timer(image_list=self.alien_explosion_images, is_loop=False)  
+        self.timer_normal = Alien.alien_timers[type]   
+        self.timer_explosion = Timer(image_list=Alien.alien_explosion_images, is_loop=False)  
         self.timer = self.timer_normal                                    
 
     def check_edges(self): 
@@ -29,8 +45,9 @@ class Alien(Sprite):
         screen_rect = self.screen.get_rect()
         return self.rect.bottom >= screen_rect.bottom or self.rect.colliderect(ship.rect)
     def hit(self):
-        self.dying = True 
-        self.timer = self.timer_explosion
+        if not self.dying:
+            self.dying = True 
+            self.timer = self.timer_explosion
     def update(self): 
         if self.timer == self.timer_explosion and self.timer.is_expired():
             self.kill()
@@ -48,7 +65,7 @@ class Alien(Sprite):
 
 class Aliens:
     def __init__(self, game, screen, settings, lasers: Lasers, ship): 
-        self.model_alien = Alien(settings=settings, screen=screen)
+        self.model_alien = Alien(settings=settings, screen=screen, type=0)
         self.game = game
         self.sb = game.scoreboard
         self.aliens = Group()
@@ -58,8 +75,8 @@ class Aliens:
         self.ship = ship
         self.create_fleet()
     def get_number_aliens_x(self, alien_width):
-        available_space_x = self.settings.screen_width - 2 * alien_width
-        number_aliens_x = int(available_space_x / (2 * alien_width))
+        available_space_x = self.settings.screen_width - 6 * alien_width
+        number_aliens_x = int(available_space_x / (1 * alien_width))
         return number_aliens_x
     def get_number_rows(self, ship_height, alien_height):
         available_space_y = (self.settings.screen_height - (3 * alien_height) - ship_height)
@@ -69,12 +86,14 @@ class Aliens:
         self.aliens.empty()
         self.create_fleet()
     def create_alien(self, alien_number, row_number):
-        alien = Alien(settings=self.settings, screen=self.screen)
+        # if row_number > 6: raise ValueError("dict out of range")
+        type = row_number // 1
+        alien = Alien(settings=self.settings, screen=self.screen, type=type)
         alien_width = alien.rect.width
 
-        alien.x = alien_width + 2 * alien_width * alien_number 
+        alien.x = alien_width + 1 * alien_width * alien_number 
         alien.rect.x = alien.x
-        alien.rect.y = alien.rect.height + 2 * alien.rect.height * row_number 
+        alien.rect.y = alien.rect.height + 1 * alien.rect.height * row_number 
         self.aliens.add(alien)     
     def create_fleet(self):
         number_aliens_x = self.get_number_aliens_x(self.model_alien.rect.width) 
