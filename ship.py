@@ -1,5 +1,5 @@
 import pygame as pg
-from pygame.sprite import Sprite
+from pygame.sprite import Sprite, Group
 from laser import Lasers
 from game_functions import clamp
 from vector import Vector
@@ -54,7 +54,7 @@ class Ship(Sprite):
             print('SHIP IS HIT !!!!!!!!!!!!!!!!!!!!!')
             self.dying = True 
             self.timer = self.timer_explosion
-            
+             
     def really_dead(self):
         self.ships_left -= 1
         print(f'Ship is dead! Only {self.ships_left} ships left')

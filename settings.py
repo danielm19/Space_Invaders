@@ -8,6 +8,9 @@ class Settings():
         self.screen_width = 1200
         self.screen_height = 800
         self.black = (0, 0, 0)
+        self.white = (255, 255, 255)
+        self.green = (0, 215, 0)
+        self.blue = (30, 145, 250)
         self.bg_image = pygame.image.load('images/space_backgroud.png')
         
         self.laser_width = 5
