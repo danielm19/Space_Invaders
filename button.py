@@ -35,8 +35,8 @@ class Button:
         self.screen.fill(self.button_color, self.rect)
         self.screen.blit(self.msg_image, self.msg_image_rect)
         
-        mouse_pos_x, mouse_pos_y = pg.mouse.get_pos()
-        if self.rect.collidepoint(x= mouse_pos_x, y= mouse_pos_y):
+        mouse_point = pg.mouse.get_pos()
+        if self.rect.collidepoint(mouse_point):
             if self.button_color == blue:
                 self.screen.fill(self.hover_color, self.rect)
                 self.screen.blit(self.hover_image, self.msg_image_rect)

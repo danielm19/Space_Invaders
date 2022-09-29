@@ -18,17 +18,17 @@ class Alien(Sprite):
     # alien_images1 = [pg.image.load(f'images/alien1{n}.bmp') for n in range(2)]
     # alien_images2 = [pg.image.load(f'images/alien2{n}.bmp') for n in range(2)]
 
-    alien_images0 = [pg.transform.rotozoom(pg.image.load(f'images/alien0{n}.bmp'), 0, 0.7) for n in range(2)]
-    alien_images1 = [pg.transform.rotozoom(pg.image.load(f'images/alien1{n}.bmp'), 0, 0.7) for n in range(2)]
-    alien_images2 = [pg.transform.rotozoom(pg.image.load(f'images/alien2{n}.bmp'), 0, 0.7) for n in range(2)]
+    alien_images0 = [pg.transform.rotozoom(pg.image.load(f'images/alien0{n}.bmp'), 0, 0.85) for n in range(2)]
+    alien_images1 = [pg.transform.rotozoom(pg.image.load(f'images/alien1{n}.bmp'), 0, 0.85) for n in range(2)]
+    alien_images2 = [pg.transform.rotozoom(pg.image.load(f'images/alien2{n}.bmp'), 0, 0.85) for n in range(2)]
 
     # alien_images3 = [pg.image.load(f'images/alien3{n}.bmp') for n in range(2)]
 
     # alien_types = {0: alien_images0, 1 : alien_images1, 2: alien_images2, 3: alien_images3}    
     alien_timers = {
-                   0 : Timer(image_list=alien_images0), 
-                   1 : Timer(image_list=alien_images1), 
-                   2 : Timer(image_list=alien_images2) 
+                   0 : Timer(image_list=alien_images0, start_index= 0, delay= 200), 
+                   1 : Timer(image_list=alien_images1, start_index= 0, delay= 350), 
+                   2 : Timer(image_list=alien_images2, start_index= 0, delay= 450) 
                 #  3 : Timer(image_list=alien_images3)}    
                 }
 
