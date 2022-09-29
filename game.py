@@ -49,7 +49,7 @@ class Game:
         self.sound.play_bg()
         while True:     
             gf.check_events(settings=self.settings, ship=self.ship)
-            self.screen.fill(self.settings.bg_color)
+            self.screen.blit(self.settings.bg_image, (0,0))
             self.ship.update()
             self.aliens.update()
             self.barriers.update()
