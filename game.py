@@ -84,12 +84,10 @@ class Game:
         bluealien_rect = bluealien.get_rect()
         bluealien_rect.center = ((self.settings.screen_width // 2.25, 400))
         
-        
         purplealien = pg.image.load('images/alien20.bmp')
         purplealien = pg.transform.scale(purplealien, (72, 72))
         purplealien_rect = purplealien.get_rect()
         purplealien_rect.center = ((self.settings.screen_width // 2.27, 440))
-        
         
         alienship = pg.image.load('images/alienship.bmp')
         alienship = pg.transform.scale(alienship, (64, 64))
@@ -97,7 +95,6 @@ class Game:
         alienship_rect.center = ((self.settings.screen_width // 2.27, 510))
         
         button_click = False
-        
         
         while button_click == False:
             self.screen.fill(self.settings.black)
@@ -124,8 +121,6 @@ class Game:
                         self.play() 
             pg.display.update()
                     
-
-
     def play(self):
         self.sound.play_bg()
         while True:     
@@ -141,8 +136,7 @@ class Game:
 def main():
     g = Game()
     g.start_screen()
-    #g.play()
-
+ 
 
 if __name__ == '__main__':
     main()
