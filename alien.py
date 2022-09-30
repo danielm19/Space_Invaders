@@ -165,8 +165,6 @@ class Aliens:
                 self.aliens_lasers.shoot(game=self.game, x=alien.rect.centerx, y=alien.rect.bottom)
             i += 1
             
-    
-
 
     def check_collisions(self):  
         collisions = pg.sprite.groupcollide(self.aliens, self.ship_lasers, False, True)  
@@ -179,9 +177,6 @@ class Aliens:
             self.ship.hit()
 
         collisions = pg.sprite.groupcollide(self.ship_lasers, self.aliens_lasers.lasers, True, True)
-        
-
-        # aliens_lasers collide with ship_lasers ?
         
         
 
