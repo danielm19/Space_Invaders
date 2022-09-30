@@ -15,6 +15,7 @@ class Lasers:
         self.lasers = Group()
         self.settings = settings
         self.type=type
+        
     def reset(self):
         self.lasers.empty()        
     def shoot(self, game, x, y):
@@ -52,6 +53,7 @@ class Laser(Sprite):
         # self.y -= self.speed_factor
         self.rect.y = self.y
         self.draw()
+        
     def draw(self):
         image = self.timer.image()
         rect = image.get_rect()

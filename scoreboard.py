@@ -11,7 +11,7 @@ class Scoreboard:
         self.screen = game.screen
         self.screen_rect = self.screen.get_rect()
 
-        self.text_color = (30, 30, 30)
+        self.text_color = (255, 255, 255)
         self.font = pg.font.SysFont(None, 48)
 
         self.score_image = None 
@@ -24,7 +24,7 @@ class Scoreboard:
 
     def prep_score(self): 
         score_str = str(self.score)
-        self.score_image = self.font.render(score_str, True, self.text_color, self.settings.white)
+        self.score_image = self.font.render(score_str, True, self.text_color, self.settings.black)
 
         # Display the score at the top right of the screen.
         self.score_rect = self.score_image.get_rect()

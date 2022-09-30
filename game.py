@@ -44,7 +44,18 @@ class Game:
         self.sound.gameover()
         pg.quit()
         sys.exit()
-        
+                    
+    def play(self):
+        self.sound.play_bg()
+        while True:     
+            gf.check_events(settings=self.settings, ship=self.ship)
+            self.screen.blit(self.settings.bg_image, (0,0))
+            self.ship.update()
+            self.aliens.update()
+            self.barriers.update()
+            self.scoreboard.update()
+            pg.display.flip()
+            
     def start_screen(self):
         ptslist = [" = 10 PTS", " = 20 PTS", "= 40 PTS", " = ???"]
         font = pg.font.SysFont('arial', 72)
@@ -120,17 +131,6 @@ class Game:
                         button_click = True
                         self.play() 
             pg.display.update()
-                    
-    def play(self):
-        self.sound.play_bg()
-        while True:     
-            gf.check_events(settings=self.settings, ship=self.ship)
-            self.screen.blit(self.settings.bg_image, (0,0))
-            self.ship.update()
-            self.aliens.update()
-            self.barriers.update()
-            self.scoreboard.update()
-            pg.display.flip()
 
 
 def main():
