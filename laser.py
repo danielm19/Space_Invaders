@@ -17,7 +17,8 @@ class Lasers:
         self.type=type
         
     def reset(self):
-        self.lasers.empty()        
+        self.lasers.empty()  
+              
     def shoot(self, game, x, y):
         self.lasers.add(Laser(settings=game.settings, screen=game.screen, 
                               x=x, y=y, sound=game.sound, type=self.type))
@@ -30,8 +31,8 @@ class Lasers:
 
 class Laser(Sprite):
     """A class to manage lasers fired from the ship"""
-    alien_laser_images = [pg.transform.rotozoom(pg.image.load(f'images/alien_laser{n}.png'), 0, 1) for n in range(2)]
-    ship_laser_images = [pg.transform.rotozoom(pg.image.load(f'images/laser_{n}.png'), 0, 1) for n in range(2)]
+    alien_laser_images = [pg.transform.rotozoom(pg.image.load(f'images/alien_laser{n}.png'), 0, 0.75) for n in range(2)]
+    ship_laser_images = [pg.transform.rotozoom(pg.image.load(f'images/laser_{n}.png'), 0, 1.5) for n in range(3)]
     laser_images = {LaserType.ALIEN: alien_laser_images, LaserType.SHIP: ship_laser_images}
 
     def __init__(self, settings, screen, x, y, sound, type):
