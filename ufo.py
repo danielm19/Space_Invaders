@@ -26,7 +26,7 @@ class Ufo(Sprite):
         self.rect = self.image.get_rect(topleft= (self.x, 0))
         self.rect.y = self.rect.height
         
-    def hit():
+    def hit(self):
         self.sb.increment_score_ufo()
         
     def update(self):
