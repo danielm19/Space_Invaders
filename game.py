@@ -55,6 +55,7 @@ class Game:
             self.aliens.update()
             self.barriers.update()
             self.scoreboard.update()
+            self.ufos.update()
             pg.display.flip()
             
     def start_screen(self):
