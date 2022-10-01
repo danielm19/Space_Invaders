@@ -29,9 +29,10 @@ class Alien(Sprite):
     alien_timers = {
                    0 : Timer(image_list=alien_images0, start_index= 0, delay= 200), 
                    1 : Timer(image_list=alien_images1, start_index= 0, delay= 350), 
-                   2 : Timer(image_list=alien_images2, start_index= 0, delay= 450) 
-                #  3 : Timer(image_list=alien_images3)}    
-                }
+                   2 : Timer(image_list=alien_images2, start_index= 0, delay= 450),
+                  # 3 : Timer(image_list=alien_images3)
+                }    
+                
 
     alien_explosion_images = [pg.image.load(f'images/explode{n}.png') for n in range(7)]
 
@@ -192,6 +193,7 @@ class Aliens:
                 alien.remove()
             alien.update() 
         self.aliens_lasers.update()
+        
     def draw(self): 
         for alien in self.aliens.sprites(): 
             alien.draw() 

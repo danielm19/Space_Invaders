@@ -16,10 +16,11 @@ class Settings():
         self.laser_width = 5
         self.laser_height = 30
         self.laser_color = 255, 0, 0
-        self.lasers_every = 5          # change to 1 to see faster lasers
+        self.lasers_every = 10          # change to 1 to see faster lasers
 
         self.aliens_shoot_every = 120    # about every 2 seconds at 60 fps
         self.alien_points = 50
+        self.ufo_points = 0
 
         self.ship_limit = 3         # total ships allowed in game before game over
 

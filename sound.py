@@ -11,6 +11,7 @@ class Sound:
         alienlaser_sound = pg.mixer.Sound('sounds/alienlaser.wav')
         photontorpedo_sound = pg.mixer.Sound('sounds/photon_torpedo.wav')
         gameover_sound = pg.mixer.Sound('sounds/gameover.wav')
+        #ufo_sound = pg.mixer.Sound('sounds/ufo_hover.wav')
         self.sounds = {'alienlaser': alienlaser_sound, 'photontorpedo': photontorpedo_sound,
                        'gameover': gameover_sound}
 
@@ -22,6 +23,7 @@ class Sound:
 
     def shoot_laser(self, type): 
         pg.mixer.Sound.play(self.sounds['alienlaser' if type == LaserType.ALIEN else 'photontorpedo'])
+        
     def gameover(self): 
         self.stop_bg() 
         pg.mixer.music.load('sounds/gameover.wav')
