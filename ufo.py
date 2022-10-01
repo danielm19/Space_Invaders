@@ -5,25 +5,26 @@ import pygame as pg
 class Ufo(Sprite):
     
     def __init__(self, game, pos):
-        super.__init__()
+        super().__init__()
         self.image = pg.image.load('images/alienship.bmp')
-        self.rect = image.get_rect(topleft(self.x, 0))
-        self.rect.y = self.rect.height
         self.screen = game.screen
         self.settings = game.settings
         self.sound = game.sound
         self.sb = game.scoreboard
         self.ufo_points = randint(500, 1500)
         self.settings.ufo_points = self.ufo_points
-        self.sound.photontorpedo_sound
+        
         
         if pos == 'right':
             self.x = self.settings.screen_width + 50
-            self.speed = -2
+            self.speed = -2.5
             
         else:
             self.x = -50
-            self.speed = 2
+            self.speed = 2.5
+        
+        self.rect = self.image.get_rect(topleft= (self.x, 0))
+        self.rect.y = self.rect.height
         
     def hit():
         self.sb.increment_score_ufo()
@@ -50,10 +51,10 @@ class Ufos:
         self.ship = game.ship
         
     def ufo_timer(self):
-        self.spawn_time -= 10
+        self.spawn_time -= 1
         if self.spawn_time < 0:
             spawn = choice(['left', 'right'])
-            ufo = UFO(game = self.game, pos= spawn)
+            ufo = Ufo(game = self.game, pos= spawn)
             self.ufos.add(ufo)
             self.spawn_time = randint(500, 1500)
     

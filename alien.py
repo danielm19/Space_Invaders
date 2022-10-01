@@ -30,7 +30,6 @@ class Alien(Sprite):
                    0 : Timer(image_list=alien_images0, start_index= 0, delay= 200), 
                    1 : Timer(image_list=alien_images1, start_index= 0, delay= 350), 
                    2 : Timer(image_list=alien_images2, start_index= 0, delay= 450),
-                  # 3 : Timer(image_list=alien_images3)
                 }    
                 
 
@@ -59,9 +58,11 @@ class Alien(Sprite):
     def check_edges(self): 
         screen_rect = self.screen.get_rect()
         return self.rect.right >= screen_rect.right or self.rect.left <= 0
+    
     def check_bottom_or_ship(self, ship):
         screen_rect = self.screen.get_rect()
         return self.rect.bottom >= screen_rect.bottom or self.rect.colliderect(ship.rect)
+    
     def hit(self):
         if not self.dying:
             self.dying = True 
@@ -80,7 +81,6 @@ class Alien(Sprite):
         rect = image.get_rect()
         rect.left, rect.top = self.rect.left, self.rect.top
         self.screen.blit(image, rect)
-
 
 class Aliens:
     def __init__(self, game): 
