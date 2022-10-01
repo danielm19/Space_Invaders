@@ -21,6 +21,10 @@ class Scoreboard:
     def increment_score(self): 
         self.score += self.settings.alien_points
         self.prep_score()
+        
+    def increment_score_ufo(self):
+        self.score += self.settings.ufo_points
+        self.prep_score()
 
     def prep_score(self): 
         score_str = str(self.score)

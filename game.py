@@ -8,6 +8,7 @@ from sound import Sound
 from scoreboard import Scoreboard
 from barrier import Barriers
 from button import Button
+from ufo import Ufos
 import sys
 
 
@@ -24,10 +25,10 @@ class Game:
 
         self.ship_lasers = Lasers(settings=self.settings, type=LaserType.SHIP)
         self.alien_lasers = Lasers(settings=self.settings, type=LaserType.ALIEN)
-        
         self.barriers = Barriers(game=self)
         self.ship = Ship(game=self)
         self.aliens = Aliens(game=self)
+        self.ufos = Ufos(game= self)
         self.settings.initialize_speed_settings()
         self.play_button = Button(screen= self.screen, text= "Play", x = self.settings.screen_width // 2, y = 625)
         self.highscore_button = Button(screen= self.screen, text= "Highscores", x = self.settings.screen_width // 2, y = 675)
