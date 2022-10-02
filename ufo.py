@@ -16,11 +16,11 @@ class Ufo(Sprite):
         self.ufo_hover = self.sound.sounds['ufohover']        
         if pos == 'right':
             self.x = self.settings.screen_width + 50
-            self.speed = -2.5
+            self.speed = -2
             
         else:
             self.x = -50
-            self.speed = 2.5
+            self.speed = 2
         
         self.rect = self.image.get_rect(topleft= (self.x, 0))
         self.rect.y = self.rect.height
