@@ -9,23 +9,12 @@ from barrier import Barriers
 
 
 class Alien(Sprite):
-    # alien_images = []
-    # for n in range(2):
-    #     alien_images.append(pg.image.load(f'images/alien{n}.bmp'))
-
-    # alien_images = [pg.image.load(f'images/alien{n}.bmp') for n in range(2)]
-
-    # alien_images0 = [pg.image.load(f'images/alien0{n}.bmp') for n in range(2)]
-    # alien_images1 = [pg.image.load(f'images/alien1{n}.bmp') for n in range(2)]
-    # alien_images2 = [pg.image.load(f'images/alien2{n}.bmp') for n in range(2)]
 
     alien_images0 = [pg.transform.rotozoom(pg.image.load(f'images/alien0{n}.bmp'), 0, 0.85) for n in range(2)]
     alien_images1 = [pg.transform.rotozoom(pg.image.load(f'images/alien1{n}.bmp'), 0, 0.85) for n in range(2)]
     alien_images2 = [pg.transform.rotozoom(pg.image.load(f'images/alien2{n}.bmp'), 0, 0.85) for n in range(2)]
 
-    # alien_images3 = [pg.image.load(f'images/alien3{n}.bmp') for n in range(2)]
-
-    # alien_types = {0: alien_images0, 1 : alien_images1, 2: alien_images2, 3: alien_images3}    
+      
     alien_timers = {
                    0 : Timer(image_list=alien_images0, start_index= 0, delay= 200), 
                    1 : Timer(image_list=alien_images1, start_index= 0, delay= 350), 
@@ -47,9 +36,6 @@ class Alien(Sprite):
         self.sb = game.scoreboard
         
         self.dying = self.dead = False
-        
-        # self.timer_normal = Timer(image_list=self.alien_images)   
-        # self.timer_normal = Timer(image_list=self.alien_types[type])
                       
         self.timer_normal = Alien.alien_timers[type]              
         self.timer_explosion = Timer(image_list=Alien.alien_explosion_images, is_loop=False)  
@@ -146,6 +132,7 @@ class Aliens:
     def check_fleet_empty(self):
         if len(self.aliens.sprites()) == 0:
             print('Aliens all gone!')
+            self.sb.levelup()
             self.game.reset()
             
     def change_fleet_direction(self):
