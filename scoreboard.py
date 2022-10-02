@@ -22,6 +22,11 @@ class Scoreboard:
         self.score += self.settings.alien_points
         self.prep_score()
         
+    def levelup(self):
+        self.level += 1
+        print("level up: level is now ",self.level)
+        self.settings.alien_speed_factor *= self.settings.speedup_factor
+        
     def increment_score_ufo(self):
         self.score += self.settings.ufo_points
         self.prep_score()

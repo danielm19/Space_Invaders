@@ -13,8 +13,7 @@ class Ufo(Sprite):
         self.sb = game.scoreboard
         self.ufo_points = randint(500, 1500)
         self.settings.ufo_points = self.ufo_points
-        
-        
+        self.ufo_hover = self.sound.sounds['ufohover']        
         if pos == 'right':
             self.x = self.settings.screen_width + 50
             self.speed = -2.5
@@ -51,11 +50,12 @@ class Ufos:
         self.ship = game.ship
         
     def ufo_timer(self):
-        self.spawn_time -= 1
+        self.spawn_time -= 0.5
         if self.spawn_time < 0:
             spawn = choice(['left', 'right'])
             ufo = Ufo(game = self.game, pos= spawn)
             self.ufos.add(ufo)
+            ufo.ufo_hover.play()
             self.spawn_time = randint(500, 1500)
     
     def check_collision(self):

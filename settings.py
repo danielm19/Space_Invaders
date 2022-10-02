@@ -21,9 +21,10 @@ class Settings():
         self.aliens_shoot_every = 120    # about every 2 seconds at 60 fps
         self.alien_points = 50
         self.ufo_points = 0
-
+        
         self.ship_limit = 3         # total ships allowed in game before game over
-
+        
+        self.speedup_factor = 1.1
         self.fleet_drop_speed = 1
         self.fleet_direction = 1     # change to a Vector(1, 0) move to the right, and ...
         self.initialize_speed_settings()

@@ -11,9 +11,9 @@ class Sound:
         alienlaser_sound = pg.mixer.Sound('sounds/alienlaser.wav')
         photontorpedo_sound = pg.mixer.Sound('sounds/photon_torpedo.wav')
         gameover_sound = pg.mixer.Sound('sounds/gameover.wav')
-        #ufo_sound = pg.mixer.Sound('sounds/ufo_hover.wav')
+        ufo_sound = pg.mixer.Sound('sounds/ufo_sound.wav')
         self.sounds = {'alienlaser': alienlaser_sound, 'photontorpedo': photontorpedo_sound,
-                       'gameover': gameover_sound}
+                       'gameover': gameover_sound, 'ufohover': ufo_sound}
 
     def play_bg(self):
         pg.mixer.music.play(-1, 0.0)
