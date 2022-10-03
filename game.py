@@ -2,7 +2,7 @@ import pygame as pg
 from settings import Settings
 import game_functions as gf
 from laser import Lasers, LaserType
-from alien import Aliens
+from alien import Aliens, Alien
 from ship import Ship
 from sound import Sound
 from scoreboard import Scoreboard
@@ -43,6 +43,7 @@ class Game:
     def game_over(self):
         print('All ships gone: game over!')
         self.sound.gameover()
+        self.scoreboard.check_high_score(Alien.alienpoints)
         pg.quit()
         sys.exit()
                     
