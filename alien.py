@@ -61,6 +61,7 @@ class Alien(Sprite):
             self.dying = True 
             self.timer = self.timer_explosion
             self.sb.increment_score(self.alienscore)
+            self.sb.check_high_score(self.alienscore)
             
             
     def update(self): 

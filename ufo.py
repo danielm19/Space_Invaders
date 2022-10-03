@@ -63,6 +63,7 @@ class Ufos:
         if collisons:
             for ufo in collisons:
                 ufo.hit()
+                ufo.ufo_hover.stop()
     
     def update(self):
         self.check_collision()
