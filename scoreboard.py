@@ -1,5 +1,6 @@
 import pygame as pg 
 # import pygame.font
+from alien import Alien
 
 class Scoreboard:
     def __init__(self, game): 
@@ -9,6 +10,7 @@ class Scoreboard:
         
         self.settings = game.settings
         self.screen = game.screen
+        self.game = game
         self.screen_rect = self.screen.get_rect()
 
         self.text_color = (255, 255, 255)
@@ -18,8 +20,8 @@ class Scoreboard:
         self.score_rect = None
         self.prep_score()
 
-    def increment_score(self): 
-        self.score += self.settings.alien_points
+    def increment_score(self, alienpoints): 
+        self.score += alienpoints
         self.prep_score()
         
     def levelup(self):

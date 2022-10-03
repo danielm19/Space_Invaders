@@ -19,7 +19,13 @@ class Alien(Sprite):
                    0 : Timer(image_list=alien_images0, start_index= 0, delay= 200), 
                    1 : Timer(image_list=alien_images1, start_index= 0, delay= 350), 
                    2 : Timer(image_list=alien_images2, start_index= 0, delay= 450),
-                }    
+                }  
+      
+    alienpoints = {
+                   0: 10,
+                   1: 20, 
+                   2: 40
+                }
                 
 
     alien_explosion_images = [pg.image.load(f'images/explode{n}.png') for n in range(7)]
@@ -34,6 +40,7 @@ class Alien(Sprite):
         self.x = float(self.rect.x)
         self.type = type
         self.sb = game.scoreboard
+        self.alienscore = Alien.alienpoints[type]
         
         self.dying = self.dead = False
                       
@@ -53,7 +60,8 @@ class Alien(Sprite):
         if not self.dying:
             self.dying = True 
             self.timer = self.timer_explosion
-            self.sb.increment_score()
+            self.sb.increment_score(self.alienscore)
+            
             
     def update(self): 
         if self.timer == self.timer_explosion and self.timer.is_expired():
