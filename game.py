@@ -31,7 +31,6 @@ class Game:
         self.ufos = Ufos(game= self)
         self.settings.initialize_speed_settings()
         self.play_button = Button(screen= self.screen, text= "Play", x = self.settings.screen_width // 2, y = 625)
-        self.highscore_button = Button(screen= self.screen, text= "Highscores", x = self.settings.screen_width // 2, y = 675)
 
     def reset(self):
         print('Resetting game...')
@@ -123,7 +122,6 @@ class Game:
             self.screen.blit(alienship, alienship_rect)
             self.screen.blit(pts4, pts4_rect)
             self.play_button.draw()
-            self.highscore_button.draw()
             
             for event in pg.event.get():
                 if event.type == pg.QUIT:
