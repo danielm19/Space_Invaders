@@ -7,7 +7,7 @@ class Scoreboard:
     def __init__(self, game): 
         self.score = 0
         self.level = 0
-        self.high_score = 0
+        self.high_score = int(stat)
         
         self.settings = game.settings
         self.screen = game.screen
@@ -19,13 +19,15 @@ class Scoreboard:
 
         self.score_image = None 
         self.score_rect = None
+        self.high_score_image = None
+        self.high_score_rect = None
         self.prep_score()
+        self.prep_high_score()
         
     def check_high_score(self, alienpoints):
         file = open('high_score.txt', 'w')
         if self.score > self.high_score:
             self.high_score = self.score
-            self.high_score += alienpoints
         file.write(str(self.high_score))
 
         self.prep_score()
@@ -76,3 +78,4 @@ class Scoreboard:
 
     def draw(self): 
         self.screen.blit(self.score_image, self.score_rect)
+        self.screen.blit(self.high_score_image, self.high_score_rect)
